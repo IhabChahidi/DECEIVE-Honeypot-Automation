@@ -382,7 +382,12 @@ try:
     logger = logging.getLogger(__name__)  
     logger.setLevel(logging.INFO)  
 
-    log_file_handler = logging.FileHandler(config['honeypot'].get("log_file", "ssh_log.log"))
+    LOG_DIR = os.path.expanduser("~/logs")  # Ensure logs are saved in ~/logs directory
+os.makedirs(LOG_DIR, exist_ok=True)  # Create the logs directory if it doesn't exist
+
+log_file_path = os.path.join(LOG_DIR, "ssh_log.log")  # Ensure log path is consistent
+log_file_handler = logging.FileHandler(log_file_path)
+
     logger.addHandler(log_file_handler)
 
     log_file_handler.setFormatter(JSONFormatter(sensor_name))
