@@ -1,13 +1,10 @@
 #!/bin/bash
-################################################################################
-# configure_splunk_alerts.sh
-# Configures Splunk to trigger alerts based on DECEIVE honeypot logs.
-################################################################################
+
 
 set -e  # Exit immediately if a command fails.
 
 echo "==========================================="
-echo "🚀 Configuring Splunk Alert for DECEIVE Honeypot"
+echo " Configuring Splunk Alert for DECEIVE Honeypot"
 echo "==========================================="
 
 SPLUNK_CMD="/opt/splunk/bin/splunk"
@@ -23,12 +20,12 @@ touch "$ALERT_LOG"
 
 # Check if Splunk is running
 if ! pgrep -x "splunkd" > /dev/null; then
-    echo "❌ Error: Splunk is not running! Starting Splunk..."
+    echo " Error: Splunk is not running! Starting Splunk..."
     sudo $SPLUNK_CMD start
     sleep 5
 fi
 
-echo "🔔 Creating alert '$ALERT_NAME' for DECEIVE logs..."
+echo " Creating alert '$ALERT_NAME' for DECEIVE logs..."
 sudo $SPLUNK_CMD add saved-search "$ALERT_NAME" \
   -search "index=main sourcetype=deceive_logs | stats count by _time, ATTACKER_IP" \
   -description "Triggers when DECEIVE logs exceed $ALERT_THRESHOLD in $ALERT_TIMEFRAME" \
@@ -42,8 +39,8 @@ sudo $SPLUNK_CMD add saved-search "$ALERT_NAME" \
   -dispatch.latest_time "now" \
   -auth "$SPLUNK_USER:$SPLUNK_PASS" | tee -a "$ALERT_LOG"
 
-echo "✅ Splunk alert '$ALERT_NAME' successfully configured."
-echo "🔔 Alert will trigger when more than $ALERT_THRESHOLD attacks occur in $ALERT_TIMEFRAME."
+echo " Splunk alert '$ALERT_NAME' successfully configured."
+echo " Alert will trigger when more than $ALERT_THRESHOLD attacks occur in $ALERT_TIMEFRAME."
 
 # Take a screenshot (if gnome-screenshot or scrot is installed)
 SCREENSHOT_DIR="$HOME/screenshots"
@@ -55,10 +52,10 @@ if command -v gnome-screenshot &> /dev/null; then
 elif command -v scrot &> /dev/null; then
     scrot "$SCREENSHOT_FILE"
 else
-    echo "⚠️ Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
+    echo " Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
 fi
 
-echo "📸 Screenshot saved: $SCREENSHOT_FILE"
+echo " Screenshot saved: $SCREENSHOT_FILE"
 echo "==========================================="
 echo "🎯 Next Steps:"
 echo "📜 Check alert log file: cat $ALERT_LOG"
