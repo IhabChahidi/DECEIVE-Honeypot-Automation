@@ -1,13 +1,10 @@
 #!/bin/bash
-################################################################################
-# simulate_attack.sh
-# Simulates various attacks on the DECEIVE honeypot.
-################################################################################
+
 
 set +e  # Allow script to continue even if a command fails.
 
 echo "==========================================="
-echo "🚀 Simulating Attacks on DECEIVE Honeypot"
+echo "Simulating Attacks on DECEIVE Honeypot"
 echo "==========================================="
 
 # Auto-detect honeypot IP
@@ -17,8 +14,8 @@ ATTACK_LOG="$HOME/DECEIVE/attack_simulation.log"
 # Ensure attack log exists
 touch "$ATTACK_LOG"
 
-echo "🎯 Targeting Honeypot IP: $HONEYPOT_IP"
-echo "📜 Logging attacks to: $ATTACK_LOG"
+echo "Targeting Honeypot IP: $HONEYPOT_IP"
+echo "Logging attacks to: $ATTACK_LOG"
 
 # Function to log attack results
 log_attack() {
@@ -26,18 +23,18 @@ log_attack() {
 }
 
 # Simulate Nmap port scanning
-echo "🔍 Running Nmap scan..."
+echo "Running Nmap scan..."
 nmap -sS -p 22,80,443,3306 "$HONEYPOT_IP" | tee -a "$ATTACK_LOG"
 log_attack "Nmap scan completed."
 
-# ✅ Verify Wordlist Exists Before Running Hydra
+# Verify Wordlist Exists Before Running Hydra
 WORDLIST=~/SecLists/Passwords/Common-Credentials/10-million-password-list-top-10000.txt
 if [ ! -f "$WORDLIST" ]; then
-    echo "❌ ERROR: Wordlist not found: $WORDLIST"
+    echo "ERROR: Wordlist not found: $WORDLIST"
     log_attack "Brute force attack skipped: Wordlist missing."
 else
     # Simulate Brute Force Attack with Hydra (Optimized for 10 min)
-    echo "🔓 Simulating SSH brute force attack with max speed..."
+    echo "Simulating SSH brute force attack with max speed..."
     timeout 600 hydra -l admin -P "$WORDLIST" -t 64 -F -w 1 -V "$HONEYPOT_IP" ssh & wait
 
     if [ $? -eq 0 ]; then
@@ -64,13 +61,13 @@ if command -v gnome-screenshot &> /dev/null; then
 elif command -v scrot &> /dev/null; then
     scrot "$SCREENSHOT_FILE"
 else
-    echo "⚠️ Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
+    echo "Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
 fi
 
-echo "📸 Screenshot saved: $SCREENSHOT_FILE"
+echo "Screenshot saved: $SCREENSHOT_FILE"
 echo "==========================================="
-echo "🎯 Next Steps:"
-echo "🔍 Check attack logs: cat $ATTACK_LOG"
-echo "📊 Monitor Splunk logs: ./monitor_splunk.sh"
-echo "📑 Run AI log analysis: ./log_analyzer_ai.py ~/DECEIVE/deceive.log 3"
+echo "Next Steps:"
+echo "Check attack logs: cat $ATTACK_LOG"
+echo "Monitor Splunk logs: ./monitor_splunk.sh"
+echo "Run AI log analysis: ./log_analyzer_ai.py ~/DECEIVE/deceive.log 3"
 
