@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-################################################################################
-# log_analyzer_ai.py
-# AI-powered log analysis for DECEIVE honeypot logs.
-################################################################################
+
 
 import re
 import sys
@@ -27,7 +24,7 @@ try:
     with open(log_file, 'r') as f:
         logs = f.readlines()
 except FileNotFoundError:
-    print(f"❌ Error: Log file '{log_file}' not found!")
+    print(f"Error: Log file '{log_file}' not found!")
     sys.exit(1)
 
 # Extract timestamp, attacker IP, and attack details
@@ -44,7 +41,7 @@ for line in logs:
 df = pd.DataFrame(log_entries, columns=["Timestamp", "Attacker_IP", "Log_Entry"])
 
 if df.empty:
-    print("⚠️ Warning: No valid attack logs found!")
+    print("Warning: No valid attack logs found!")
     sys.exit(1)
 
 # AI-based clustering using TF-IDF + K-Means
@@ -61,7 +58,7 @@ top_attackers = attacker_counts.most_common(5)
 # Save analyzed data to CSV
 csv_output = "ai_log_analysis.csv"
 df.to_csv(csv_output, index=False)
-print(f"✅ AI log analysis completed. Results saved to '{csv_output}'")
+print(f"AI log analysis completed. Results saved to '{csv_output}'")
 
 # Plot results
 plt.figure(figsize=(10, 5))
@@ -83,13 +80,13 @@ if os.system("command -v gnome-screenshot") == 0:
 elif os.system("command -v scrot") == 0:
     os.system(f"scrot {screenshot_file}")
 else:
-    print("⚠️ Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'.")
+    print("Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'.")
 
-print(f"📸 Screenshot saved: {screenshot_file}")
+print(f"Screenshot saved: {screenshot_file}")
 
 print("===========================================")
-print("🎯 Next Steps:")
-print(f"📜 Review the AI-generated report: {csv_output}")
-print(f"📊 View attack trends: ai_analysis_plot.png")
-print(f"📑 View screenshot: {screenshot_file}")
-print("📊 Use Splunk to further analyze logs!")
+print("Next Steps:")
+print(f"Review the AI-generated report: {csv_output}")
+print(f"View attack trends: ai_analysis_plot.png")
+print(f"View screenshot: {screenshot_file}")
+print("Use Splunk to further analyze logs!")
