@@ -208,7 +208,7 @@ The following images showcase key steps in deploying and running DECEIVE:
   ![Splunk Monitor Error](assets/screenshots/splunk_monitor_2025-02-12_20-15-53.png)
 
 - **Splunk Alerts Configured:**  
-  ![Splunk Alerts Configured](assets/screenshots/05_splunk_alerts_configured_2025-02-12_20-15-55.png)
+  ![Splunk Alerts Configured](/assets/screenshots/05_splunk_alerts_configured_2025-02-12_20-15-56.png)
 
 - **AI Log Analysis:**  
   ![AI Log Analysis](assets/screenshots/06_ai_log_analysis_2025-02-12_20-15-59.png)
