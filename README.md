@@ -222,4 +222,10 @@ The following images showcase key steps in deploying and running DECEIVE:
 - **Additional Splunk Alert:**  
   ![Additional Splunk Alert](assets/screenshots/splunk_alerts_2025-02-12_20-15-55.png)
 
+### Acknowledgments
+
+- **Splunk** – For providing powerful tools for log management, monitoring, and analysis used in this project. [Learn more](https://www.splunk.com).
+
+This project leverages Splunk's capabilities to enhance cybersecurity monitoring and honeypot analysis.
+
 
