@@ -1,8 +1,5 @@
 #!/bin/bash
-################################################################################
-# generate_report.sh
-# Generates a professional PDF report summarizing AI log analysis and attack data.
-################################################################################
+
 
 set -e  # Exit immediately if a command fails.
 
@@ -27,23 +24,23 @@ mkdir -p "$SCREENSHOT_DIR"
 
 # Check if required log files exist
 if [ ! -f "$LOG_ANALYSIS" ]; then
-    echo "⚠️ Running AI Log Analysis..."
+    echo " Running AI Log Analysis..."
     python3 ~/scripts/log_analyzer_ai.py "$ATTACK_LOG" > "$LOG_ANALYSIS"
 fi
 
 
 if [ ! -f "$ATTACK_LOG" ]; then
-    echo "❌ Error: Attack log file not found! Run 'simulate_attack.sh' first."
+    echo " Error: Attack log file not found! Run 'simulate_attack.sh' first."
     exit 1
 fi
 
 if [ ! -f "$PLOT_IMAGE" ]; then
-    echo "⚠️ Warning: No AI visualization found! The report will proceed without it."
+    echo " Warning: No AI visualization found! The report will proceed without it."
 fi
 
 # Check if LaTeX is installed
 if ! command -v pdflatex &> /dev/null; then
-    echo "❌ Error: LaTeX is not installed! Install it using:"
+    echo " Error: LaTeX is not installed! Install it using:"
     echo "sudo apt install texlive-latex-base -y"
     exit 1
 fi
@@ -94,14 +91,14 @@ EOF
 
 # Compile LaTeX document
 cd "$REPORT_DIR"
-pdflatex attack_report.tex > /dev/null 2>&1 || { echo "❌ Error: LaTeX compilation failed!"; exit 1; }
+pdflatex attack_report.tex > /dev/null 2>&1 || { echo " Error: LaTeX compilation failed!"; exit 1; }
 cd -
 
 # Verify report generation
 if [ -f "$REPORT_PDF" ]; then
-    echo "✅ Report successfully generated: $REPORT_PDF"
+    echo "Report successfully generated: $REPORT_PDF"
 else
-    echo "❌ Error: Report generation failed!"
+    echo "Error: Report generation failed!"
     exit 1
 fi
 
@@ -113,10 +110,10 @@ if command -v gnome-screenshot &> /dev/null; then
 elif command -v scrot &> /dev/null; then
     scrot "$SCREENSHOT_FILE"
 else
-    echo "⚠️ Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
+    echo "Screenshot tool not found! Install 'gnome-screenshot' or 'scrot'."
 fi
 
-echo "📸 Screenshot saved: $SCREENSHOT_FILE"
+echo "Screenshot saved: $SCREENSHOT_FILE"
 echo "==========================================="
 echo "Next Steps:"
 echo "📄 View the report: xdg-open $REPORT_PDF"
