@@ -26,36 +26,35 @@
 DECEIVE/
  ├── SSH/                     # SSH honeypot engine
  │   ├── ssh_server.py        # Main SSH honeypot script
- │   ├── config.ini           # Configuration file
+ │   ├── config.ini.TEMPLATE  # Configuration template
  │   ├── prompt.txt           # AI-generated system emulation
- │   ├── ssh_log.log          # SSH attack logs
- │   └── ssh_host_key         # SSH private key for authentication
- │
- ├── scripts/                 # Attack simulation scripts
- │   ├── simulate_attack.sh   # Runs brute force and network attacks
- │   ├── monitor_splunk.sh    # Monitors Splunk logs
- │   ├── install_deceive.sh   # Full honeypot setup script
- │   └── configure_splunk.sh  # Configures Splunk alerts
- │
- ├── reports/                 # Automated cybersecurity reports
- │   ├── attack_report.pdf    # AI-generated cybersecurity report
- │   ├── ai_log_analysis.csv  # AI-detected threats
- │   └── screenshots/         # Honeypot activity snapshots
- │
- ├── logs/                    # Honeypot activity logs
- │   ├── ssh_log.log          # SSH attack logs
- │   ├── attack_simulation.log # Attack simulation logs
- │   └── splunk_monitor.log   # Splunk monitoring logs
  │
  ├── assets/                  # Visual assets
  │   ├── deceive_banner.png   # Project banner
- │   └── README.md            # Documentation images
+ │   └── screenshots/         # Screenshots of project steps
  │
- ├── run_all.sh               # Master automation script
- ├── log_analyzer_ai.py        # AI-driven threat analysis
- ├── README.md                 # Project documentation
- └── LICENSE                   # Open-source MIT License
+ ├── logs/                    # Honeypot activity logs
+ │   ├── ssh_log.log          # SSH attack logs
+ │
+ ├── reports/                 # Automated cybersecurity reports
+ │   ├── attack_report.pdf    # AI-generated cybersecurity report
+ │
+ ├── scripts/                 # Attack simulation scripts
+ │   ├── configure_splunk_alerts.sh
+ │   ├── generate_report.sh
+ │   ├── install_deceive_splunk.sh
+ │   ├── log_analyzer_ai.py
+ │   ├── monitor_splunk.sh
+ │   ├── requirements.txt
+ │   ├── run_all.sh           # Master automation script
+ │   ├── run_deceive.sh
+ │   └── simulate_attack.sh
+ │
+ ├── LICENSE                  # Open-source MIT License
+ ├── README.md                # Project documentation
+ └── TODO.txt                 # Project tasks
 ```
+
 ---
 
 ## System Requirements
