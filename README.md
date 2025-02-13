@@ -1,9 +1,5 @@
 # DECEIVE - AI-Powered Honeypot Automation
 
-<img align="right" src="assets/deceive_banner.png" alt="A cybercriminal interacts with a ghostly, AI-driven honeypot system">
-
-# DECEIVE - AI-Powered Honeypot Automation
-
 <img align="right" src="assets/deceive_banner.png" alt="A cybercriminal interacts with a ghostly, AI-driven honeypot system" width="350">
 
 **DECEIVE** (**DECeption with Evaluative Integrated Validation Engine**) is an AI-driven honeypot designed to simulate real-world system interactions and capture attacker behaviors. Unlike traditional honeypots, DECEIVE automatically generates realistic environments, logs intrusions, and integrates with **Splunk** and AI-driven forensic analysis for cybersecurity intelligence.
