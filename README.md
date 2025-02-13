@@ -186,3 +186,15 @@ This project is licensed under the **MIT License**.
 [GitHub](https://github.com/IhabChahidi) | [LinkedIn](https://linkedin.com/in/IhabChahidi)
 
 
+## Project Screenshots
+The following images showcase key steps in deploying and running DECEIVE:
+- Installation Complete: ![Installation Complete](assets/screenshots/01_installation_complete_2025-02-12_12-35-51.png)
+- Honeypot Running: ![Honeypot Running](assets/screenshots/02_honeypot_running_2025-02-12_12-35-57.png)
+- Attack Simulation: ![Attack Simulation](assets/screenshots/03_attack_simulation_2025-02-12_20-01-58.png)
+- Splunk Monitoring: ![Splunk Monitoring](assets/screenshots/04_splunk_monitoring_2025-02-12_20-15-54.png)
+- Splunk Alerts Configured: ![Splunk Alerts Configured](assets/screenshots/05_splunk_alerts_configured_2025-02-12_20-15-56.png)
+- AI Log Analysis: ![AI Log Analysis](assets/screenshots/06_ai_log_analysis_2025-02-12_20-15-59.png)
+- Report Generated: ![Report Generated](assets/screenshots/07_report_generated_2025-02-12_20-16-00.png)
+- Splunk Monitor Error: ![Splunk Monitor Error](assets/screenshots/splunk_monitor_2025-02-12_20-15-53.png)
+
+
